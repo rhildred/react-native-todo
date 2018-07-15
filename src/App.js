@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, YellowBox } from 'react-native';
+import { StyleSheet, Text, View, TextInput, YellowBox , TouchableHighlight, Image} from 'react-native';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -17,14 +17,7 @@ console.warn = message => {
 
 
 // Initialize Firebase
-var config = {
-  apiKey: "yours",
-  authDomain: "yours",
-  databaseURL: "yours",
-  projectId: "yours",
-  storageBucket: "yours",
-  messagingSenderId: "yours"
-};
+import config from '../config.json';
 firebase.initializeApp(config);
 
 export default class App extends React.Component {
@@ -59,6 +52,19 @@ export default class App extends React.Component {
 
   }
 
+  onTaskCompletion(id) {
+    console.log(this.oTodos[id]);
+    alert("clicked complete " + id);
+  }
+
+  onTaskDeletion(id) {
+    console.log(this.oTodos[id]);
+    firebase.database().ref('tasks/' + id).remove().then(() =>{
+      this.getFromFirebase();
+    });
+  }
+
+
   updateText(event) {
     //    console.log(this.state);
     //    alert("text box: " + this.state.todo);
@@ -87,7 +93,15 @@ export default class App extends React.Component {
         <View style={styles.todos}>
           {
             Object.keys(this.oTodos).reverse().map((key) => {
-              return (<Text key={key}>{this.oTodos[key].name}</Text>)
+              return (<View key={key} style={styles.row}>
+                <TouchableHighlight onPress={() => this.onTaskCompletion(key)}>
+                  <Image style={styles.check} source={require('../images/2x/baseline_done_black_18dp.png')} />
+                </TouchableHighlight>
+                <TouchableHighlight onPress={() => this.onTaskDeletion(key)}>
+                  <Image style={styles.check} source={require('../images/2x/baseline_delete_black_18dp.png')} />
+                </TouchableHighlight>
+                <Text>{this.oTodos[key].name}</Text>
+              </View>);
             })
           }
         </View>
@@ -109,5 +123,14 @@ const styles = StyleSheet.create({
   },
   todos: {
     "marginTop": 20,
+  },
+  row: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start'
+  },
+  check: {
+    height: 20,
+    width: 20
   }
+
 });
