@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, YellowBox , TouchableHighlight, Image} from 'react-native';
 import firebase from 'firebase/app';
 import 'firebase/database';
-
 import _ from 'lodash';
 
 
@@ -24,7 +23,7 @@ export default class App extends React.Component {
   oTodos = {};
   constructor(props) {
     super(props);
-    this.state = { todo: '' };
+    this.state = { todo: '', date:"2016-05-15" };
     this.getFromFirebase();
   }
 
