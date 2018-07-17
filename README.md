@@ -53,3 +53,6 @@ In another command prompt run `exp build:status`. When it is done it will give y
 
 If you need the keystore used to sign your app, download it with `exp fetch:android:keystore`.
 
+Note:
+
+This repository was started with `create-react-native-app myapp --with-web-support --scripts-version 1.2.0-alpha.4`.
