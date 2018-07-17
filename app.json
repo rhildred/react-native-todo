@@ -1,5 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "sdkVersion": "25.0.0",
+    "name": "React Native Todo",
+    "icon": "./images/yinyang.png",
+    "version": "1.0.0",
+    "slug": "react-native-todo",
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname"
+    },
+    "android": {
+      "package": "io.github.rhildred"
+    }
   }
 }
