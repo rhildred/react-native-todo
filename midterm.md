@@ -18,4 +18,4 @@ Marking
 
 *Note: The maximum is 100%. The items add up to 113 so that you don't have to get them all to do well.
 
-The todo project is due as a zip of your project in the assignments folder by noon on Tuesday if you choose to do your exam Tuesday or at 10:00 am if you choose to do your exam Friday.
+The todo project is due as a zip of your project in the **assignments folder**.
